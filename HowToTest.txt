@@ -1,0 +1,49 @@
+Steps to run the test on your system are as follows.
+
+step 1- open VS code and in terminal write , git clone https://github.com/Vipul2912/RBAC.git
+This will clone the whole code in your system.
+
+step 2- run command, npm run build
+
+step 3- create a DataBase cluster on mongoDB atlas and connect it with the cluster URL
+
+step 4- create a .env file. with 
+        PORT=4000 (or your desired port)
+        MONGODB_URL = <YOUR MONGODB CLUSTER URL>
+        JWT_SECRET = <YOUR SECRET KEY>
+
+step 5- run command, npm start
+make sure your get "Server is running on PORT", "MongoDB is connected" these messages in your terminal
+
+step 6- on your browser, go to your http://localhost:PORT you will go to a login page where you can login, can go to register page and can register yourself, register the desired number of users.
+
+step 7- Go to your cluster and change role of a few users from user to admin. 
+
+step 8- login to an admin account with its credentials and you can see all the users listed, you can delete the users (not other admins) 
+
+step 9- login to a user account (not admin) you can see the user does not have access to delete the user.
+
+step 10- open postman software and create a new collection for API testing. create request for the following.
+
+1. Register  POST  http://localhost:PORT/api/auth/register 
+{
+    "name":name,
+    "email":email@email.com
+    "password":
+}
+
+2. Login POST  http://localhost:PORT/api/auth/login
+{
+    "email":email@email.com
+    "password":
+}
+
+3. Logout POST http://localhost:PORT/api/auth/logout
+
+4. Get User GET http://localhost:4000/api/admin/getuser (for admin only)
+
+5. Delete POST http://localhost:4000/api/admin/delete/:id (for admin only)
+
+step 11- Test using registering and logging in to the accounts of user and admins and hit the API calls. 
+
+You need to change the access from the database directly in mongodb atlas. 
